@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function If() {
-  return (
-    <div>If</div>
-  );
+  return <div>If</div>;
 }
 
 export default If;

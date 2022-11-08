@@ -17,8 +17,8 @@ function Header() {
 
   const themeStyles = {
     backgroundImage: darkTheme
-    ? "linear-gradient(45deg, #000000 0%, #425B8C"
-    : "linear-gradient(45deg, #73466B 0%, #ffffff 100%)", //light
+      ? "linear-gradient(45deg, #000000 0%, #425B8C"
+      : "linear-gradient(45deg, #73466B 0%, #ffffff 100%)", //light
     color: darkTheme ? "#fff" : "#333", //words
   };
 

@@ -8,7 +8,7 @@ import { Switch } from "antd";
 import {
   useTheme,
   useThemeUpdate,
-} from "../../context/settings/Theme/ThemeContext";
+} from "../../Context/settings/Theme/ThemeContext";
 // them for toggles dark and light mode
 
 function Header() {

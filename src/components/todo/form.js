@@ -1,57 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+const useForm = (callback, defaultValues = {}) => {
+  const [values, setValues] = useState({});
 
-const TodoForm = (props) => {
-  return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>Add To Do Item</Card.Title>
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    callback(values);
+  };
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>To Do Item</Form.Label>
-              <Form.Control
-                onChange={handleChange}
-                name="text"
-                type="text"
-                placeholder="Item Details"
-              />
-            </Form.Group>
+  const handleChange = (event) => {
+    event.persist();
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Assigned To</Form.Label>
-              <Form.Control
-                onChange={handleChange}
-                name="assignee"
-                type="text"
-                placeholder="Assignee Name"
-              />
-            </Form.Group>
+    let { name, value } = event.target;
+    if (parseInt(value)) {
+      value = parseInt(value);
+    }
 
-            <Form.Group controlId="formBasicCheckbox">
-              <Form.Label>Difficulty</Form.Label>
-              <Form.Control
-                onChange={handleChange}
-                defaultValue={3}
-                type="range"
-                min={1}
-                max={5}
-                name="difficulty"
-              />
-            </Form.Group>
+    setValues((values) => ({ ...values, [name]: value }));
+  };
 
-            <Button variant="primary" type="submit">
-              Add Item
-            </Button>
-          </Card.Body>
-        </Card>
-      </Form>
-    </>
-  );
+  useEffect(() => {
+    setValues(defaultValues);
+  }, [defaultValues]);
+
+  return {
+    handleChange,
+    handleSubmit,
+    values,
+  };
 };
 
-export default TodoForm;
+export default useForm;

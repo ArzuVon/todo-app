@@ -1,18 +1,18 @@
-import React from 'react'
-import 'bootsrap/dist/css/bootstrap.min.css';
-import Header from './components/header/header'
-import ToDO from './components/todo/form';
-import Footer from './components/Footer/footer'
+import './App.css';
+import React, {useState} from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage.js';
 
 
-function App () {
-    return(
-        <>
-        <Header />
-        <ToDO />
-        <Footer />
-        </>
-    )
-}
+function App() {
+
+  return (
+     <Router>
+        <Routes>
+          <Route exact path='/' element={<HomePage />} />
+        </Routes>
+      </Router>
+    );
+  }
 
 export default App;

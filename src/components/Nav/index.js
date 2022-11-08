@@ -8,7 +8,7 @@ import { Switch } from "antd";
 import {
   useTheme,
   useThemeUpdate,
-} from "../../Context/settings/Theme/ThemeContext";
+} from "../../context/settings/Theme/ThemeContext";
 // them for toggles dark and light mode
 
 function Header() {
@@ -17,9 +17,9 @@ function Header() {
 
   const themeStyles = {
     backgroundImage: darkTheme
-      ? "linear-gradient(45deg, #000000 0%, #b3b3b3"
-      : "linear-gradient(45deg, #0093E9 0%, #80D0C7 100%)",
-    color: darkTheme ? "#fff" : "#333",
+    ? "linear-gradient(45deg, #000000 0%, #425B8C"
+    : "linear-gradient(45deg, #73466B 0%, #ffffff 100%)", //light
+    color: darkTheme ? "#fff" : "#333", //words
   };
 
   const toggleDark = {
@@ -55,8 +55,7 @@ function Header() {
       </ButtonContainer>
 
       <LogoContainer>
-        <span>ToDo App</span>
-        <TbNotes />
+        <span>Your ToDo </span>
       </LogoContainer>
     </Container>
   );

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const useForm = (callback, defaultValues = {}) => {
+const useForm = (callback, defaultValues={}) => {
+
   const [values, setValues] = useState({});
 
   const handleSubmit = (event) => {
@@ -16,11 +17,11 @@ const useForm = (callback, defaultValues = {}) => {
       value = parseInt(value);
     }
 
-    setValues((values) => ({ ...values, [name]: value }));
+    setValues(values => ({ ...values, [name]: value }));
   };
 
-  useEffect(() => {
-    setValues(defaultValues);
+  useEffect( () => {
+    setValues( defaultValues );
   }, [defaultValues]);
 
   return {

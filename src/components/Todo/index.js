@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Wrapper } from './ToDoElements.js';
-import useForm from '../../hooks/form.js';
-import Form from '../Form';
-import List from '../List';
+import React, { useEffect, useState } from "react";
+import { Container, Wrapper } from "./ToDoElements.js";
+import useForm from "../../hooks/form.js";
+import Form from "../Form";
+import List from "../List";
 
-import { useTheme } from '../../context/settings/Theme/ThemeContext';
+import { useTheme } from "../../context/settings/Theme/ThemeContext";
 
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 function ToDo() {
-
   const darkTheme = useTheme();
 
   const [defaultValues] = useState({
@@ -26,20 +25,19 @@ function ToDo() {
     setList([...list, item]);
   }
 
-  function clearAll(){
-    document.getElementById('todoForm').reset();
+  function clearAll() {
+    document.getElementById("todoForm").reset();
   }
 
   function deleteItem(id) {
-    const items = list.filter( item => item.id !== id );
+    const items = list.filter((item) => item.id !== id);
     setList(items);
   }
 
   function toggleComplete(id) {
-
-    const items = list.map( item => {
-      if ( item.id == id ) {
-        item.complete = ! item.complete;
+    const items = list.map((item) => {
+      if (item.id == id) {
+        item.complete = !item.complete;
       }
       return item;
     });
@@ -48,11 +46,11 @@ function ToDo() {
   }
 
   const themeStyles = {
-    backgroundColor: darkTheme ? '#d4d1d1' : '#FFF',
+    backgroundColor: darkTheme ? "#d4d1d1" : "#FFF",
   };
 
   useEffect(() => {
-    let incompleteCount = list.filter(item => !item.complete).length;
+    let incompleteCount = list.filter((item) => !item.complete).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;
   }, [list]);
@@ -60,8 +58,16 @@ function ToDo() {
   return (
     <Container style={themeStyles}>
       <Wrapper>
-        <Form handleChange={handleChange} handleSubmit={handleSubmit} clearAll={clearAll}/>
-        <List toggleComplete={toggleComplete} list={list} deleteItem={deleteItem}/>
+        <Form
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          clearAll={clearAll}
+        />
+        <List
+          toggleComplete={toggleComplete}
+          list={list}
+          deleteItem={deleteItem}
+        />
       </Wrapper>
     </Container>
   );
